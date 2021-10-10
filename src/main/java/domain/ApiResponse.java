@@ -1,74 +1,124 @@
 package domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.net.URI;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ApiResponse {
 
+    /**
+     * Topic summary (can contain HTML, e.g. italics)
+     */
     @JsonProperty("Abstract")
-    private final String abstractValue;
+    private String abstractValue;
 
+    /**
+     * Name of Abstract source
+     */
     @JsonProperty("AbstractSource")
-    private final String abstractSource;
+    private String abstractSource;
 
+    /**
+     * Topic summary (with no HTML)
+     */
     @JsonProperty("AbstractText")
-    private final String abstractText;
+    private String abstractText;
 
+    /**
+     * Deep link to expanded topic page in AbstractSource
+     */
     @JsonProperty("AbstractURL")
-    private final URI abstractUrl;
+    private String abstractUrl;
 
+    /**
+     * Instant answer
+     */
     @JsonProperty("Answer")
-    private final String answer;
+    private Integer answer;
 
+    /**
+     * Type of Answer, e.g. calc, color, digest, info, ip, iploc, phone, pw, rand, regexp, unicode, upc, or zip
+     */
     @JsonProperty("AnswerType")
-    private final String answerType;
+    private String answerType;
 
+    /**
+     * Dictionary definition (may differ from Abstract)
+     */
     @JsonProperty("Definition")
-    private final String definition;
+    private String definition;
 
+    /**
+     * Name of Definition source
+     */
     @JsonProperty("DefinitionSource")
-    private final String definitionSource;
+    private String definitionSource;
 
+    /**
+     * Deep link to expanded definition page in DefinitionSource
+     */
     @JsonProperty("DefinitionURL")
-    private final String definitionUrl;
+    private String definitionUrl;
 
     @JsonProperty("Entity")
-    private final String entity;
+    private String entity;
 
+    /**
+     * Name of topic that goes with Abstract
+     */
     @JsonProperty("Heading")
-    private final String heading;
+    private String heading;
 
+    /**
+     * Link to image that goes with Abstract
+     */
     @JsonProperty("Image")
-    private final String image;
+    private String image;
 
     @JsonProperty("ImageHeight")
-    private final Double imageHeight;
+    private Integer imageHeight;
 
     @JsonProperty("ImageIsLogo")
-    private final Integer imageIsLogo;
+    private Integer imageIsLogo;
 
     @JsonProperty("ImageWidth")
-    private final Double imageWidth;
+    private Integer imageWidth;
 
     @JsonProperty("Infobox")
-    private final Infobox infobox;
+    private Infobox infobox;
 
+    /**
+     * !bang redirect URL
+     */
     @JsonProperty("Redirect")
-    private final String redirect;
+    private String redirect;
 
+    /**
+     * Array of internal links to related topics associated with Abstract
+     */
     @JsonProperty("RelatedTopics")
-    private final List<RelatedTopic> relatedTopics;
+    private List<RelatedTopic> relatedTopics;
 
+    /**
+     * Array of external links associated with Abstract
+     */
     @JsonProperty("Results")
-    private final List<Result> results;
+    private List<Result> results;
 
+    /**
+     * Response category, i.e. A (article), D (disambiguation), C (category), N (name), E (exclusive), or nothing.
+     */
     @JsonProperty("Type")
-    private final String type;
+    private String type;
 
     @JsonProperty("meta")
-    private final Meta meta;
+    private JsonNode meta;
+
 }
